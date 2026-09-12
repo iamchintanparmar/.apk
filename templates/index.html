@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tkinter → APK Converter</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="card">
+    <h1>Tkinter → APK Converter</h1>
+    <p class="subtitle">Upload a Tkinter script. We convert it to Kivy (Android-capable) and try to build an APK.</p>
+
+    <div class="notice">
+      <strong>Heads up:</strong> Tkinter itself can't run on Android — there's no Tcl/Tk build for it.
+      This tool auto-converts common widgets (Label, Button, Entry, Frame, Checkbutton, Text) to Kivy
+      equivalents. Anything it can't confidently translate is flagged, not silently dropped.
+    </div>
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul class="flashes">
+        {% for m in messages %}
+          <li>{{ m }}</li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+
+    <form action="{{ url_for('convert') }}" method="post" enctype="multipart/form-data">
+      <label for="app_title">App name</label>
+      <input type="text" id="app_title" name="app_title" placeholder="My Cool App" required>
+
+      <label for="tkinter_file">Tkinter Python file (.py)</label>
+      <input type="file" id="tkinter_file" name="tkinter_file" accept=".py" required>
+
+      <button type="submit">Convert to APK</button>
+    </form>
+  </div>
+
+  <footer>Built with Flask · Author: {{ author }}</footer>
+</body>
+</html>

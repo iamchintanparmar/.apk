@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Conversion Result</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="card">
+    {% if built %}
+      <h1>✅ APK built successfully</h1>
+      <p class="subtitle">Your APK was compiled on the server and is ready to download.</p>
+    {% else %}
+      <h1>📦 Converted project ready</h1>
+      <p class="subtitle">
+        This server doesn't have the Android SDK/NDK + buildozer installed, so we couldn't
+        compile the APK here. Instead, download the fully converted, ready-to-build Kivy
+        project below and run one command on your own Linux/macOS/WSL machine.
+      </p>
+    {% endif %}
+
+    <a class="download-btn" href="{{ url_for('download', name=download_name) }}">
+      Download {{ download_name }}
+    </a>
+
+    <h2>Conversion notes</h2>
+    {% if warnings %}
+      <ul>{% for w in warnings %}<li>{{ w }}</li>{% endfor %}</ul>
+    {% else %}
+      <p>No warnings.</p>
+    {% endif %}
+
+    <h2>Widgets converted</h2>
+    {% if converted %}
+      <ul>{% for c in converted %}<li>{{ c }}</li>{% endfor %}</ul>
+    {% else %}
+      <p>None detected.</p>
+    {% endif %}
+
+    <h2>Needs manual attention</h2>
+    {% if unsupported %}
+      <ul>{% for u in unsupported %}<li>{{ u }}</li>{% endfor %}</ul>
+    {% else %}
+      <p>Nothing flagged.</p>
+    {% endif %}
+
+    <a class="back-link" href="{{ url_for('index') }}">← Convert another file</a>
+  </div>
+
+  <footer>Built with Flask · Author: {{ author }}</footer>
+</body>
+</html>
