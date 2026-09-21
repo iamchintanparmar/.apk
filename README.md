@@ -1,6 +1,6 @@
 # Tkinter → APK Converter
 
-**Author: Chintan Parmar**
+Created and developed by **[Chintan Parmar](https://github.com/iamchintanparmar)**.
 
 A Flask web app that takes a Tkinter (`.py`) script, auto-converts what it can
 into an equivalent [Kivy](https://kivy.org) app (the closest Android-capable
