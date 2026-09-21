@@ -100,3 +100,17 @@ The finished `.apk` will appear in the project's `bin/` folder.
   not bundle (it's multiple gigabytes and platform-specific).
 - This is a best-effort developer tool, not a guarantee that any arbitrary
   Tkinter app becomes a polished Android app with zero manual work.
+
+
+
+
+## Author
+
+**Chintan Parmar** — Full-Stack Developer & Creative Technologist
+
+- GitHub: [@iamchintanparmar](https://github.com/iamchintanparmar)
+- Portfolio: [iamchintanparmar.github.io](https://iamchintanparmar.github.io)
+
+## License
+
+MIT
